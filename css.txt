@@ -1,0 +1,820 @@
+/* Import Google Fonts - Poppins is similar to the example */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #007bff; /* Example blue, adjust as needed */
+    --secondary-color: #6c757d; /* Grey for secondary text */
+    --background-dark: #1a1a2e; /* Dark background for sections */
+    --background-light: #2c2c40; /* Slightly lighter dark for cards/elements */
+    --text-light: #f0f0f0; /* Light text on dark background */
+    --text-dark: #333; /* Dark text (if used on light bg) */
+    --accent-color: #00d2d3; /* A bright accent color, similar to example */
+    --transition-speed: 0.3s;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-light);
+    background-color: var(--background-dark);
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+/* --- Utility Classes --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 80px 0; /* Consistent vertical spacing for sections */
+    position: relative; /* For animations within sections */
+}
+
+section:nth-child(even) { /* Optional: subtle alternating background for sections */
+    background-color: var(--background-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+h2::after { /* Underline effect for section titles */
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Header & Navbar --- */
+.main-header {
+    width: 100%;
+    position: fixed; /* Makes it sticky */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: transparent; /* Default transparent */
+    transition: background-color var(--transition-speed) ease-in-out,
+                box-shadow var(--transition-speed) ease-in-out;
+    padding: 15px 0;
+}
+
+/* JavaScript will add this class on scroll */
+.main-header.scrolled {
+    background-color: var(--background-dark); /* Solid background when scrolled */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo a {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-links a::after { /* Underline effect on hover/active */
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width var(--transition-speed) ease-out;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after { /* 'active' class will be added by JS */
+    width: 100%;
+}
+
+/* --- Mobile Menu Toggle --- */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above other content when open */
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    margin: 4px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 100vh; /* Takes full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%); /* Subtle gradient background */
+    position: relative; /* For potential future background animations */
+    padding-top: 80px; /* Space for fixed header */
+    overflow: hidden; /* Ensure content doesn't spill during animations */
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 20px;
+    z-index: 10; /* Ensure content is above any background effects */
+}
+
+.hero-content h1 {
+    font-size: 3.5em; /* Large heading */
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+.hero-content .highlight {
+    color: var(--accent-color); /* The glowing accent color */
+}
+
+.hero-content .typewriter-text {
+    font-size: 1.8em;
+    font-weight: 400;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    height: 1.2em; /* Ensure consistent height during typing animation */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Typing animation specific styles (JS will handle the class toggling) */
+.typewriter-text .cursor {
+    display: inline-block;
+    background-color: var(--accent-color);
+    width: 3px;
+    height: 1.2em;
+    margin-left: 5px;
+    animation: blinkCursor 0.7s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- Buttons --- */
+.hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all var(--transition-speed) ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--background-dark); /* Dark text on bright button */
+    border: 2px solid var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent-color);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-light);
+    border: 2px solid var(--text-light);
+}
+
+.btn-secondary:hover {
+    background-color: var(--text-light);
+    color: var(--background-dark);
+}
+
+/* --- About Me Section --- */
+.about-section {
+    background-color: var(--background-light); /* Slightly different background for visual separation */
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    align-items: center; /* Vertically align items in the middle */
+    gap: 40px; /* Space between image and text */
+}
+
+.about-image {
+    flex: 1; /* Allow image to grow */
+    min-width: 250px; /* Minimum width for image before wrapping */
+    text-align: center;
+}
+
+.about-image .profile-pic {
+    width: 300px; /* Fixed size for the image */
+    height: 300px;
+    border-radius: 50%; /* Makes it circular */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    border: 5px solid var(--accent-color); /* Border around the picture */
+    box-shadow: 0 0 15px rgba(0, 210, 211, 0.4); /* Subtle glow */
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-image .profile-pic:hover {
+    transform: scale(1.03); /* Slight zoom on hover */
+}
+
+.about-text {
+    flex: 2; /* Allow text to take more space */
+    min-width: 300px; /* Minimum width for text before wrapping */
+    line-height: 1.8;
+}
+
+.about-text p {
+    margin-bottom: 15px; /* Space between paragraphs */
+    color: var(--text-light);
+}
+
+/* --- Projects Section --- */
+.projects-section {
+    background-color: var(--background-dark); /* Ensure background consistency */
+}
+
+/* --- Project Filters --- */
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+    margin-bottom: 50px;
+}
+
+.filter-btn {
+    background-color: var(--background-light);
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 25px; /* Pill shape */
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all var(--transition-speed) ease;
+    text-transform: capitalize; /* Ensure nice display */
+}
+
+.filter-btn:hover {
+    background-color: var(--primary-color); /* Light hover effect */
+    border-color: var(--primary-color);
+    color: var(--background-dark);
+}
+
+.filter-btn.active {
+    background-color: var(--accent-color);
+    color: var(--background-dark); /* Dark text on active accent */
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 210, 211, 0.4); /* Subtle glow for active */
+}
+
+/* --- Project Grid --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between cards */
+}
+
+.project-card {
+    background-color: var(--background-light);
+    border-radius: 10px;
+    overflow: hidden; /* Ensures image corners are rounded */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform var(--transition-speed) ease-in-out,
+                box-shadow var(--transition-speed) ease-in-out;
+    display: flex;
+    flex-direction: column;
+    opacity: 1; /* Default visible state */
+    transform: translateY(0); /* Default position */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* For JS filter animation */
+}
+
+.project-card.hidden {
+    opacity: 0;
+    transform: translateY(20px); /* Move down slightly when hidden */
+    pointer-events: none; /* Make it unclickable when hidden */
+    position: absolute; /* Take out of flow to prevent gaps */
+    width: 100%; /* Maintain width when absolute */
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 210, 211, 0.5); /* Enhanced shadow and glow */
+}
+
+.project-card img {
+    width: 100%;
+    height: 220px; /* Fixed height for consistent card appearance */
+    object-fit: cover; /* Ensures image covers area without distortion */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows info section to grow to fill space */
+}
+
+.project-info h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.project-info p {
+    font-size: 0.95em;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allows paragraph to take available space */
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    margin-top: auto; /* Pushes links to the bottom of the card */
+}
+
+.project-links a {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.project-links a:hover {
+    background-color: var(--accent-color);
+    color: var(--background-dark);
+}
+
+/* --- Skills Section --- */
+.skills-section {
+    background-color: var(--background-light); /* Different background for visual separation */
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid for skills */
+    gap: 30px; /* Space between skill items */
+    margin-top: 40px;
+}
+
+.skill-item {
+    background-color: var(--background-dark);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform var(--transition-speed) ease-in-out,
+                box-shadow var(--transition-speed) ease-in-out;
+    opacity: 0; /* Hidden by default, JavaScript will make it visible */
+    transform: translateY(20px); /* Start slightly below, for slide-up effect */
+    will-change: opacity, transform; /* Optimize for animation */
+}
+
+/* Class added by JavaScript when element is in view */
+.skill-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.skill-item:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 210, 211, 0.4); /* Enhanced shadow & glow */
+}
+
+.skill-item .skill-icon,
+.skill-item .skill-icon-img {
+    font-size: 3.5em; /* For Font Awesome icons */
+    width: 80px; /* For image icons */
+    height: 80px;
+    margin-bottom: 15px;
+    color: var(--accent-color); /* Default color for Font Awesome icons */
+    /* If using image icons, the color comes from the image itself */
+}
+
+.skill-item .skill-icon-img {
+    display: block; /* Ensure image is block level */
+    margin: 0 auto 15px auto; /* Center image */
+    object-fit: contain; /* Ensure image fits without cropping */
+}
+
+.skill-item h3 {
+    font-size: 1.4em;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.skill-item p {
+    font-size: 0.9em;
+    color: var(--secondary-color); /* Slightly lighter text for descriptions */
+    line-height: 1.7;
+}
+
+/* --- Contact Section --- */
+.contact-section {
+    background-color: var(--background-dark); /* Consistent background */
+}
+
+.contact-content {
+    max-width: 700px; /* Constrain form width similar to example */
+    margin: 0 auto;
+    text-align: center; /* Center the intro text */
+}
+
+.contact-intro {
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between form groups */
+    background-color: var(--background-light);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    text-align: left; /* Align form labels/inputs left */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Spacing for each input field */
+}
+
+.form-group label {
+    display: block; /* Make label appear on its own line */
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-light);
+    font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    background-color: var(--background-dark); /* Dark input fields */
+    color: var(--text-light);
+    font-family: var(--font-family);
+    font-size: 1em;
+    outline: none;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group input[type="email"]::placeholder,
+.form-group textarea::placeholder {
+    color: var(--secondary-color); /* Placeholder text color */
+    opacity: 0.7;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color); /* Highlight border on focus */
+    box-shadow: 0 0 0 3px rgba(0, 210, 211, 0.3); /* Subtle glow on focus */
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
+    min-height: 120px;
+}
+
+/* Submit button styling - reusing .btn .btn-primary from hero section */
+.contact-form .btn {
+    width: auto; /* Allow button to size based on content */
+    align-self: flex-end; /* Align button to the right within the form */
+    margin-top: 10px;
+}
+
+/* --- Footer - Refined Styles --- */
+.main-footer {
+    background-color: var(--background-dark); /* Can match body or use a slightly different dark */
+    color: var(--text-light);
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Space between copyright and social links */
+}
+
+.main-footer p {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    margin: 0; /* Remove default paragraph margin */
+}
+
+.main-footer .social-links {
+    display: flex;
+    gap: 25px; /* Space between social icons */
+}
+
+.main-footer .social-links a {
+    color: var(--text-light); /* Default icon color */
+    font-size: 1.6em; /* Size of icons */
+    transition: color var(--transition-speed) ease;
+}
+
+.main-footer .social-links a:hover {
+    color: var(--accent-color); /* Accent color on hover */
+}
+
+/* --- Form Validation Feedback --- */
+.form-group.is-invalid input,
+.form-group.is-invalid textarea {
+    border-color: #dc3545; /* Red border for invalid */
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.3);
+}
+
+.form-group.is-valid input,
+.form-group.is-valid textarea {
+    border-color: #28a745; /* Green border for valid */
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.3);
+}
+
+.form-group small {
+    color: #dc3545; /* Red text for error message */
+    font-size: 0.85em;
+    margin-top: 5px;
+    display: block; /* Ensures message is on its own line */
+    text-align: left;
+}
+
+/* --- Responsive Design (Mobile First Approach) --- */
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 10px 0;
+    }
+
+    .navbar {
+        padding: 0 15px;
+    }
+
+    .nav-links {
+        position: fixed;
+        right: 0;
+        top: 0; /* Aligns with header height */
+        background-color: var(--background-dark);
+        height: 100%; /* Take full height */
+        width: 70%; /* Max width for mobile menu */
+        flex-direction: column;
+        justify-content: flex-start; /* Start items from top */
+        align-items: center;
+        transform: translateX(100%); /* Hide off-screen by default */
+        transition: transform 0.5s ease-in-out;
+        padding-top: 80px; /* Space for logo/toggle if needed above links */
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-links.nav-active {
+        transform: translateX(0); /* Slide in */
+    }
+
+    .nav-links li {
+        margin: 20px 0; /* More spacing for mobile links */
+        opacity: 0; /* Start hidden for staggered animation */
+    }
+
+    .nav-links li a {
+        font-size: 1.5em;
+    }
+
+    .menu-toggle {
+        display: flex; /* Show hamburger icon */
+    }
+
+    /* Animation for hamburger icon to 'X' */
+    .menu-toggle.toggle .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .menu-toggle.toggle .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.toggle .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Staggered animation for nav links */
+    .nav-links.nav-active li {
+        animation: navLinkFade 0.5s ease forwards var(--delay);
+    }
+
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    h2 {
+        font-size: 2em; /* Adjust for smaller screens */
+    }
+
+    .hero-content h1 {
+        font-size: 3em;
+    }
+
+    .hero-content .typewriter-text {
+        font-size: 1.5em;
+    }
+
+    .about-content {
+        flex-direction: column; /* Stack image and text on smaller screens */
+        text-align: center;
+    }
+
+    .about-image, .about-text {
+        min-width: unset; /* Remove min-width when stacked */
+        width: 100%;
+    }
+
+    .project-filters {
+        flex-direction: column; /* Stack filter buttons on smaller screens */
+        align-items: center;
+    }
+
+    .filter-btn {
+        width: 80%; /* Make buttons wider */
+        max-width: 250px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr; /* Single column layout on small screens */
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .contact-form {
+        padding: 25px;
+    }
+
+    .form-group label {
+        font-size: 0.9em;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+
+    .contact-form .btn {
+        width: 100%; /* Full width button on small screens */
+        align-self: center;
+    }
+}
+
+/* Small devices (phones, less than 576px) */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .logo a {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content .typewriter-text {
+        font-size: 1.2em;
+    }
+
+    .hero-buttons {
+        flex-direction: column; /* Stack buttons on very small screens */
+        gap: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+    }
+
+    .about-image .profile-pic {
+        width: 250px;
+        height: 250px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr; /* Single column on small phones */
+    }
+
+    .skill-item {
+        padding: 25px;
+    }
+
+    .skill-item .skill-icon,
+    .skill-item .skill-icon-img {
+        font-size: 3em;
+        width: 70px;
+        height: 70px;
+    }
+}

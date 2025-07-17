@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mahfujur Rahman - Computer Vision Engineer Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="navbar container">
+        <div class="logo">
+          <a href="#home">Mahfujur Rahman</a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero-section">
+        <div class="container">
+          <div class="hero-content">
+            <h1>Hi, I'm <span class="highlight">Mahfujur Rahman</span></h1>
+            <p class="typewriter-text">
+              A passionate <span class="typed-text"></span
+              ><span class="cursor">&nbsp;</span>
+            </p>
+            <div class="hero-buttons">
+              <a href="#projects" class="btn btn-primary">View My Work</a>
+              <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+              <a href="mahfujurr .pdf" class="btn btn-secondary">CV</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="container">
+          <h2>About Me</h2>
+          <div class="about-content">
+            <div class="about-image">
+              <img
+                src="/Profile.jpeg"
+                alt="Your Profile Picture"
+                class="profile-pic"
+              />
+            </div>
+            <div class="about-text">
+              <p>
+                Hello! I'm Mahfujur Rahman, a Computer Vision Engineer with a
+                strong passion for transforming raw image and video data into
+                actionable insights. My journey began with a fascination for how
+                machines can 'see' and interpret the world, leading me to
+                specialize in areas like object detection, image segmentation,
+                facial recognition, and deep learning for visual tasks.
+              </p>
+              <p>
+                I thrive on building intelligent systems that can solve complex
+                real-world problems, from enhancing medical diagnostics to
+                automating industrial processes. My expertise spans Python,
+                OpenCV, TensorFlow, PyTorch, and various cloud platforms. I'm
+                always eager to learn new techniques and contribute to the
+                cutting edge of computer vision. Let's build something
+                extraordinary together!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="publications" class="publications">
+        <div class="container">
+          <h2>Publications</h2>
+          <div class="project-grid">
+            <div
+              class="project-card"
+              data-categories="object-detection,image-classification"
+            >
+              <img
+                src="/real_time_object_detection.jpg"
+                alt="Project Thumbnail for Object Detection and Classification"
+              />
+              <div class="project-info">
+                <h3>Research Title: Real-time Object Detection</h3>
+                <p>
+                  Implemented a real-time object detection system using YOLOv7
+                  on custom datasets for industrial anomaly detection, achieving
+                  high accuracy and low latency.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/yourusername/your-repo-1"
+                    target="_blank"
+                    >GitHub</a
+                  >
+                  <a href="#" target="_blank">Live Demo</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="projects-section">
+        <div class="container">
+          <h2>Computer Vision Projects</h2>
+
+          <div class="project-filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="object-detection">
+              Object Detection
+            </button>
+            <button class="filter-btn" data-category="image-segmentation">
+              Image Segmentation
+            </button>
+            <button class="filter-btn" data-category="image-classification">
+              Image Classification
+            </button>
+            <button class="filter-btn" data-category="generative-models">
+              Generative Models
+            </button>
+            <button class="filter-btn" data-category="medical-imaging">
+              Medical Imaging
+            </button>
+          </div>
+
+          <div class="project-grid">
+            <div
+              class="project-card"
+              data-categories="object-detection,image-classification"
+            >
+              <img
+                src="/real_time_object_detection.jpg"
+                alt="Project Thumbnail for Object Detection and Classification"
+              />
+              <div class="project-info">
+                <h3>Project Title: Real-time Object Detection</h3>
+                <p>
+                  Implemented a real-time object detection system using YOLOv7
+                  on custom datasets for industrial anomaly detection, achieving
+                  high accuracy and low latency.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/yourusername/your-repo-1"
+                    target="_blank"
+                    >GitHub</a
+                  >
+                  <a href="#" target="_blank">Live Demo</a>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card"
+              data-categories="image-segmentation,medical-imaging"
+            >
+              <img
+                src="/12880_2024_1194_Fig4_HTML.png"
+                alt="Project Thumbnail for Medical Image Segmentation"
+              />
+              <div class="project-info">
+                <h3>Project Title: Medical Image Segmentation with U-Net</h3>
+                <p>
+                  Developed a U-Net based deep learning model for semantic
+                  segmentation of medical images (e.g., tumor detection in MRI
+                  scans), providing precise boundary delineation.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/yourusername/your-repo-2"
+                    target="_blank"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-categories="generative-models">
+              <img
+                src="/1676467454410.png"
+                alt="Project Thumbnail for Style Transfer"
+              />
+              <div class="project-info">
+                <h3>Project Title: Neural Style Transfer Application</h3>
+                <p>
+                  Created a web application that applies artistic styles from
+                  famous paintings to user-uploaded images using VGG network and
+                  content/style loss functions.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/yourusername/your-repo-3"
+                    target="_blank"
+                    >GitHub</a
+                  >
+                  <a href="#" target="_blank">Live Demo</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-categories="image-classification">
+              <img
+                src="/Titelbild-Custom-Classifiers_Pointly.png"
+                alt="Project Thumbnail for Image Classification"
+              />
+              <div class="project-info">
+                <h3>Project Title: Custom Image Classifier</h3>
+                <p>
+                  Built a robust image classification model to categorize
+                  various plant species from leaf images, achieving over 95%
+                  accuracy using transfer learning with ResNet.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/yourusername/your-repo-4"
+                    target="_blank"
+                    >GitHub</a
+                  >
+                  <a href="#" target="_blank">Live Demo</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="skills-section">
+        <div class="container">
+          <h2>Skills</h2>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <i class="fab fa-python skill-icon"></i>
+              <h3>Python</h3>
+              <p>
+                Strong proficiency in Python for data manipulation, scripting,
+                and building CV/ML pipelines.
+              </p>
+            </div>
+
+            <div class="skill-item">
+              <i class="fas fa-camera skill-icon"></i>
+              <h3>OpenCV</h3>
+              <p>
+                Extensive experience with OpenCV for image processing, feature
+                detection, object tracking, and video analysis.
+              </p>
+            </div>
+
+            <div class="skill-item">
+              <i class="fas fa-brain skill-icon"></i>
+              <h3>TensorFlow / Keras</h3>
+              <p>
+                Hands-on experience in building, training, and deploying deep
+                learning models for various CV tasks.
+              </p>
+            </div>
+
+            <div class="skill-item">
+              <i class="fas fa-microchip skill-icon"></i>
+              <h3>PyTorch</h3>
+              <p>
+                Proficient in PyTorch for research, rapid prototyping, and
+                developing custom neural network architectures.
+              </p>
+            </div>
+
+            <div class="skill-item">
+              <i class="fas fa-cogs skill-icon"></i>
+              <h3>Scikit-learn</h3>
+              <p>
+                Utilizing scikit-learn for traditional machine learning
+                algorithms, preprocessing, and model evaluation.
+              </p>
+            </div>
+
+            <div class="skill-item">
+              <i class="fas fa-server skill-icon"></i>
+              <h3>CUDA / GPU Computing</h3>
+              <p>
+                Optimizing deep learning workloads and leveraging GPU
+                acceleration for efficient model training.
+              </p>
+            </div>
+
+            <div class="skill-item">
+              <i class="fab fa-docker skill-icon"></i>
+              <h3>Docker</h3>
+              <p>
+                Containerizing development environments and deploying CV
+                applications efficiently.
+              </p>
+            </div>
+
+            <div class="skill-item">
+              <i class="fas fa-cloud skill-icon"></i>
+              <h3>Cloud Platforms (AWS/Azure/GCP)</h3>
+              <p>
+                Experience with cloud services for scalable model training,
+                deployment, and data storage.
+              </p>
+            </div>
+
+            <div class="skill-item">
+              <i class="fa-github skill-icon"></i>
+              <h3>GIT</h3>
+              <p>
+                Experience with cloud services for scalable model training,
+                deployment, and data storage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <div class="container">
+          <h2>Contact Me</h2>
+          <div class="contact-content">
+            <p class="contact-intro">
+              Have a project in mind, a question about Computer Vision, or just
+              want to say hello? Feel free to reach out!
+            </p>
+            <form
+              class="contact-form"
+              action="https://formspree.io/f/xzzrleqd"
+              method="POST"
+            >
+              <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Mahfujur Rahman"
+                  required
+                />
+                <small></small>
+              </div>
+              <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="mahfujur.ai.dev@gmail.com"
+                  required
+                />
+                <small></small>
+              </div>
+              <div class="form-group">
+                <label for="message">Your Message:</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  placeholder="Tell me about your project or inquiry..."
+                  required
+                ></textarea>
+                <small></small>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="container">
+        <p>&copy; 2025 Mahfujur Rahman All rights reserved.</p>
+        <div class="social-links">
+          <a
+            href="https://www.linkedin.com/in/mahfujur-rahman-811a4a25a/"
+            target="_blank"
+            aria-label="LinkedIn Profile"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a
+            href="https://github.com/yourusername"
+            target="_blank"
+            aria-label="GitHub Profile"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
